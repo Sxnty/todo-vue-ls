@@ -83,6 +83,19 @@ h4 {
 	margin-bottom: 1.5rem;
 }
 
+.create-todo textarea {
+	display: block;
+  resize: none;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	color: var(--dark);
+	background-color: #FFF;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	margin-bottom: 1.5rem;
+}
+
 .create-todo .options {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -175,7 +188,7 @@ input:checked ~ .bubble::after {
 
 .todo-list .todo-item {
 	display: flex;
-	align-items: center;
+  flex-direction: column;
 	background-color: #FFF;
 	padding: 1rem;
 	border-radius: 0.5rem;

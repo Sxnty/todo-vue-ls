@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed, watch } from 'vue';
-import {MdDeleteforever} from 'oh-vue-icons/icons'
+import { MdDeleteforever } from 'oh-vue-icons/icons'
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 let todos = ref([]);
@@ -12,7 +12,7 @@ const input_category = ref(null);
 
 onMounted(() => {
   name.value = localStorage.getItem('name') || ''
-  if(todos.value.length === 0) {
+  if (todos.value.length === 0) {
     todos.value = JSON.parse(localStorage.getItem('todos')) || []
   }
 
@@ -36,6 +36,12 @@ watch(todos, (newVal) => {
   console.log(todos)
   localStorage.setItem('todos', JSON.stringify(newVal))
 }, { deep: true })
+
+const deleteTask = (id) => {
+  let updatedTodos = todos.value.filter((e) => e.title !== id)
+  todos.value = updatedTodos;
+  localStorage.setItem('todos', JSON.stringify(todos))
+}
 </script>
 
 <template>
@@ -74,8 +80,13 @@ watch(todos, (newVal) => {
     <div>
       <section class="todo-list" v-for="todo in todos" :key="todo.title">
         <div class="todo-item">
-          <h1>{{ todo.title }}</h1>
-          <label>{{todo.description }}</label>
+          <div class="todo-heading">
+            <h1>{{ todo.title }}</h1>
+            <button @click="deleteTask(todo.title)">Delete</button>
+          </div>
+          <label>{{ todo.description }}</label>
+          <br>
+          <p>Category: {{ todo.category }}</p>
           <span>
           </span>
         </div>

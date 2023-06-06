@@ -201,7 +201,19 @@ input:checked ~ .bubble::after {
 	margin-right: 1rem;
 	cursor: pointer;
 }
-
+.todo-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.todo-heading button {
+  color: red;
+  font-weight: bold;
+  background-color: rgba(255, 106, 106, 0.199);
+  padding: .5rem;
+  border-radius: .5rem;
+}
 .todo-item .todo-content {
 	flex: 1 1 0%;
 }
